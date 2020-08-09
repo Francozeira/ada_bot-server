@@ -1,0 +1,6 @@
+applications:
+- name: ada-bot
+  host: ada-bot
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
