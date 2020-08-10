@@ -1,7 +1,7 @@
 const uuidv1 = require('uuid/v1')
 const AssistantV2 = require('ibm-watson/assistant/v2')
 const { IamAuthenticator } = require('ibm-watson/auth')
-const Cloudant = require('@cloudant/cloudant')
+const cloudant = require('./cloudant')
 
 // WATSON ASSISTANT
 const assistant = new AssistantV2({
@@ -12,28 +12,16 @@ const assistant = new AssistantV2({
 	url: process.env.WA_URL,
 })
 
-// CLOUDANT DB
-const cloudant = Cloudant({ 
-	account: process.env.CL_ACC, 
-	plugins: ['retry',{ iamauth: { iamApiKey: process.env.CL_IAM_APIKEY } } ]
-})
-cloudant.db.use(process.env.DB_NAME)
-
-cloudant.db.list().then((body) => {
-	body.forEach((db) => {
-		console.log(db)
-	})
-}).catch((err) => { console.log(err) })
-
 // GENERATE RANDOM STRING
 function generateID() {
 	return uuidv1()
 }
 
-
 async function receiveMessage (req, res) {
 	const message = req.body
 	console.log('message :>> ', message)
+
+	cloudant.saveUserMessage(message)
 
 	var session = null
 
@@ -52,8 +40,8 @@ async function receiveMessage (req, res) {
 		assistantId: process.env.WA_ASSISTANT_ID,
 		sessionId: session,
 		input: {
-			'message_type': message.text,
-			'text': 'hi'
+			'message_type': message.type,
+			'text': message.text
 		}
 	})
 		.then(res => {
