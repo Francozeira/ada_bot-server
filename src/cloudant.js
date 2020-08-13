@@ -8,7 +8,6 @@ const dBConnect = Cloudant({
 })
 const cloudant = dBConnect.db.use(process.env.DB_NAME)
 
-
 // GENERATE RANDOM STRING
 function generateID() {
 	return uuidv1()
@@ -23,7 +22,8 @@ async function saveUserMessage (message) {
 			type: message.type,
 			content: message.text
 		},
-		session_id: null
+		session_id: null,
+		enabled: true
 	}	
 	cloudant.insert(userMsg)
 
@@ -32,4 +32,20 @@ async function saveUserMessage (message) {
 		})
 }
 
+const activeSessionCheck = async user_id => {
+	const activeUsersession = await cloudant.search('Partitioned', 'getSessionById', { q: `active: true && user_id: "${user_id}"`, partition: 'session', include_docs: true })
+
+	if (activeUsersession.rows.length === 0) {
+		return null
+	}
+
+	else if (activeUsersession.rows.length === 1) {
+		return activeUsersession.rows[0].doc
+
+	} else {
+		console.error(`Logical Error (activeSessionCheck) :>> ${activeUsersession.rows.length} active session found`)
+	}
+}
+
 module.exports.saveUserMessage = saveUserMessage
+module.exports.activeSessionCheck = activeSessionCheck
