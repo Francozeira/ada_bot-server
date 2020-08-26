@@ -13,6 +13,7 @@ function generateID() {
 	return uuidv1()
 }
 
+// SAVE NEW USER MESSAGE
 async function saveUserMessage (message) {
 	const userMsg = {
 		_id: 'user_msg:' + generateID(),
@@ -32,8 +33,9 @@ async function saveUserMessage (message) {
 		})
 }
 
+// CHECK FOR ACTIVE SESSION
 const activeSessionCheck = async user_id => {
-	const activeUsersession = await cloudant.search('Partitioned', 'getSessionById', { q: `active: true && user_id: "${user_id}"`, partition: 'session', include_docs: true })
+	const activeUsersession = await cloudant.search('Partitioned', 'getSessionById', { q: `enabled: true AND user_id: "${user_id}"`, partition: 'session', include_docs: true })
 
 	if (activeUsersession.rows.length === 0) {
 		return null
@@ -47,5 +49,26 @@ const activeSessionCheck = async user_id => {
 	}
 }
 
+// CREATE NEW SESSION
+const createSession = async (user_id, watson_session_id) => {
+	const session = {
+		_id: 'session:' + generateID(),
+		createdAt: Date.now(),
+		updatedAt: Date.now(),
+		intents: [],
+		watson_session_id: watson_session_id,
+		user_id: user_id,
+		enabled: true
+	}	
+	await cloudant.insert(session)
+		.catch (err => {
+			console.error('Cloudant Error (createSession) :>> ', err)
+		})
+
+	return session
+
+}
+
 module.exports.saveUserMessage = saveUserMessage
 module.exports.activeSessionCheck = activeSessionCheck
+module.exports.createSession = createSession

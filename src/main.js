@@ -18,20 +18,20 @@ async function receiveMessage (req, res) {
 
 	const activeSession =	await getActiveSessionFromUser(message)
 
-	// assistant.message({
-	// 	assistantId: process.env.WA_ASSISTANT_ID,
-	// 	sessionId: createdSession.result.session_id,
-	// 	input: {
-	// 		'message_type': message.type,
-	// 		'text': message.text
-	// 	}
-	// })
-	// 	.then(res => {
-	// 		console.log(JSON.stringify(res.result, null, 2))
-	// 	})
-	// 	.catch(err => {
-	// 		console.log(err)
-	// 	})
+	assistant.message({
+		assistantId: process.env.WA_ASSISTANT_ID,
+		sessionId: activeSession.watson_session_id,
+		input: {
+			'message_type': message.type,
+			'text': message.text
+		}
+	})
+		.then(res => {
+			console.log(JSON.stringify(res.result, null, 2))
+		})
+		.catch(err => {
+			console.log(err)
+		})
 
 	res.send({ message: 'ok' })
 }
@@ -43,7 +43,9 @@ const getActiveSessionFromUser = async message => {
 	if (activeSession === null) {
 		console.log(`Info :>> No ${message.user_id} active sessions found`)
 
-		const createdSession = await createSession()
+		const createdWASession = await createWASession()
+		const createdSession = await cloudant.createSession(message.user_id, createdWASession)
+		console.log(`Info :>> Created new ${message.user_id} session: ${createdSession.id}`)
 		return createdSession
 
 	}
@@ -53,8 +55,8 @@ const getActiveSessionFromUser = async message => {
 	}
 }
 
-// CREATES WATSON SESSION 
-const createSession = async () => {
+// CREATE WATSON SESSION 
+const createWASession = async () => {
 
 	const createdSession = await assistant.createSession({
 		assistantId: process.env.WA_ASSISTANT_ID
