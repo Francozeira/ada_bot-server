@@ -16,24 +16,15 @@ async function receiveMessage (req, res) {
 	const message = req.body
 	console.log(`Info :>> User ${message.user_id} message received: ${message.text}`)
 
-	const activeSession =	await getActiveSessionFromUser(message)
+	let activeSession =	await getActiveSessionFromUser(message)
+	let msgReply = await sendMessageToWA(activeSession, message)
 
-	assistant.message({
-		assistantId: process.env.WA_ASSISTANT_ID,
-		sessionId: activeSession.watson_session_id,
-		input: {
-			'message_type': message.type,
-			'text': message.text
-		}
-	})
-		.then(res => {
-			console.log(JSON.stringify(res.result, null, 2))
-		})
-		.catch(err => {
-			console.log(err)
-		})
+	if (msgReply === undefined) {
+		activeSession =	await getActiveSessionFromUser(message)
+		msgReply = await sendMessageToWA(activeSession, message)
+	}
 
-	res.send({ message: 'ok' })
+	res.send({ message: msgReply.result.output.generic[0].text})
 }
 
 // GET USER ACTIVE SESSIONS
@@ -45,7 +36,7 @@ const getActiveSessionFromUser = async message => {
 
 		const createdWASession = await createWASession()
 		const createdSession = await cloudant.createSession(message.user_id, createdWASession)
-		console.log(`Info :>> Created new ${message.user_id} session: ${createdSession.id}`)
+		console.log(`Info :>> Created new ${message.user_id} session: ${createdSession._id}`)
 		return createdSession
 
 	}
@@ -57,17 +48,49 @@ const getActiveSessionFromUser = async message => {
 
 // CREATE WATSON SESSION 
 const createWASession = async () => {
-
 	const createdSession = await assistant.createSession({
 		assistantId: process.env.WA_ASSISTANT_ID
 	})
 		.catch (err => {
+		
 			console.error('Watson Error (createSession) :>> ', err.message)
 			return err
 		})
-
+	
 	console.log(`Info :>> Created new WATSON session: ${createdSession.result.session_id}`)
 	return createdSession.result.session_id
 }
+
+// USE AN ACTIVE SESSION TO SEND A NEW MESSAGE TO WATSON ASSISTANT
+const sendMessageToWA = async (activeSession, message) => {
+
+	let watsonMessageReturn = await assistant.message({
+		assistantId: process.env.WA_ASSISTANT_ID,
+		sessionId: activeSession.watson_session_id,
+		input: {
+			'message_type': message.type,
+			'text': message.text
+		}
+	})
+
+		.catch(async err => {
+			
+			if(err.message === 'Invalid Session') {
+				console.log('Info :>> Invalid Session')
+
+				await Promise.all([
+					cloudant.invalidateSession(activeSession),
+					getActiveSessionFromUser(message)
+				])
+
+			} else {
+				console.error('Watson Error (sendMessageToWA) :>> ', err.message)
+			}
+		})
+
+	return watsonMessageReturn
+		
+}
+
 
 module.exports.receiveMessage = receiveMessage

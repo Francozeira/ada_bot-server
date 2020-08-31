@@ -69,6 +69,19 @@ const createSession = async (user_id, watson_session_id) => {
 
 }
 
+// CREATE NEW SESSION
+const invalidateSession = async sessionToInvalidate => {
+	sessionToInvalidate.enabled = false
+	await cloudant.insert(sessionToInvalidate)
+		.catch (err => {
+			console.error('Cloudant Error (createSession) :>> ', err)
+		})
+
+	return
+
+}
+
 module.exports.saveUserMessage = saveUserMessage
 module.exports.activeSessionCheck = activeSessionCheck
 module.exports.createSession = createSession
+module.exports.invalidateSession = invalidateSession
