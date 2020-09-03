@@ -14,22 +14,24 @@ function generateID() {
 }
 
 // SAVE NEW USER MESSAGE
-async function saveUserMessage (message) {
-	const userMsg = {
-		_id: 'user_msg:' + generateID(),
-		timeStamp: Date.now(),
-		intents: [],
-		message: {
-			type: message.type,
-			content: message.text
-		},
-		session_id: null,
-		enabled: true
-	}	
+const saveUserMessage = async userMsg => {
+	userMsg.timestamp = Date.now()
+	userMsg._id = 'user_msg:' + generateID()
+	
 	cloudant.insert(userMsg)
-
 		.catch (err => {
 			console.error('Cloudant Error (saveUserMessage) :>> ', err)
+		})
+}
+
+// SAVE NEW BOT MESSAGE
+const saveBotMessage = async botMessage => {
+	botMessage.timestamp = Date.now()
+	botMessage._id = 'bot_msg:' + generateID()
+	
+	cloudant.insert(botMessage)
+		.catch (err => {
+			console.error('Cloudant Error (saveBotMessage) :>> ', err)
 		})
 }
 
@@ -55,7 +57,6 @@ const createSession = async (user_id, watson_session_id) => {
 		_id: 'session:' + generateID(),
 		createdAt: Date.now(),
 		updatedAt: Date.now(),
-		intents: [],
 		watson_session_id: watson_session_id,
 		user_id: user_id,
 		enabled: true
@@ -82,6 +83,7 @@ const invalidateSession = async sessionToInvalidate => {
 }
 
 module.exports.saveUserMessage = saveUserMessage
+module.exports.saveBotMessage = saveBotMessage
 module.exports.activeSessionCheck = activeSessionCheck
 module.exports.createSession = createSession
 module.exports.invalidateSession = invalidateSession

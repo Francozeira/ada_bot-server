@@ -11,18 +11,38 @@ const assistant = new AssistantV2({
 	url: process.env.WA_URL,
 })
 
-// RECEIVE USER MESSAGE, SAVE IT ON DB AND SEND IT TO WATSON 
+// RECEIVE USER MESSAGE AND ORCHESTRATE ANSWER
 async function receiveMessage (req, res) {
-	const message = req.body
-	console.log(`Info :>> User ${message.user_id} message received: ${message.text}`)
+	let userMessage = req.body
+	console.log(`Info :>> User ${userMessage.user_id} message received: ${userMessage.text}`)
 
-	let activeSession =	await getActiveSessionFromUser(message)
-	let msgReply = await sendMessageToWA(activeSession, message)
+	let activeSession =	await getActiveSessionFromUser(userMessage)
+	let msgReply = await sendMessageToWA(activeSession, userMessage)
 
+	// CASE OF WA SESSION EXPIRED
 	if (msgReply === undefined) {
-		activeSession =	await getActiveSessionFromUser(message)
-		msgReply = await sendMessageToWA(activeSession, message)
+		activeSession =	await getActiveSessionFromUser(userMessage)
+		msgReply = await sendMessageToWA(activeSession, userMessage)
 	}
+
+	// UPDATES USER MESSAGE VARIABLE TO SAVE IT IN DB
+	userMessage.session_id = activeSession._id
+	userMessage.intents = msgReply.result.output.intents
+	userMessage.entities = msgReply.result.output.entities
+	
+	// CREATES BOT MESSAGE VARIABLE TO SAVE IT IN DB
+	const botMessage = {
+		session_id: activeSession._id,
+		message: {
+			type : msgReply.result.output.generic[0].response_type,
+			content : msgReply.result.output.generic[0].text
+		}
+	}
+
+	await Promise.all([
+		cloudant.saveUserMessage(userMessage),
+		cloudant.saveBotMessage(botMessage)
+	])
 
 	res.send({ message: msgReply.result.output.generic[0].text})
 }
