@@ -1,0 +1,14 @@
+{ "courses": [
+        {
+            "name": "Análise e Desenvolvimento de Sistemas",
+            "duration": "2 anos e meio"
+        },
+        {
+            "name": "Ciência da Computação",
+            "duration": "5 anos"
+        },
+        {
+            "name": "Design",
+            "duration": "4 anos"
+        }
+]}
