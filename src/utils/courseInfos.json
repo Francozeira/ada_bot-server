@@ -1,36 +1,238 @@
-{ "courses": [
+{
+  "courses": [
     {
-        "name": "Análise e Desenvolvimento de Sistemas",
-        "duration": "2 anos e meio", 
-        "shift" : "noturno", 
-        "location": "Cidade Universitária", 
-        "tuition": "R$ 672,50", 
-        "site": "https://uniandrade.br/graduacao/arquitetura-e-urbanismo/", 
-        "email" : "administracao@uniandrade.com.br"
+      "name": "Análise e Desenvolvimento de Sistemas",
+      "duration": "2 anos e meio",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 672,50",
+      "site": "https://uniandrade.br/graduacao/ads",
+      "email": "ads@uniandrade.com.br"
     },
-    { "name": "Administração", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/administracao", "email" : "administracao@uniandrade.com.br" },
-    { "name": "Arquitetura e Urbanismo", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/arquitetura_e_urbanismo", "email" : "arquitetura_e_urbanismo@uniandrade.com.br" },
-    { "name": "Biomedicina", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/biomedicina", "email" : "biomedicina@uniandrade.com.br" },
-    { "name": "Ciência da Computação", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/ciencia_da_computacao", "email" : "ciencia_da_computacao@uniandrade.com.br" },
-    { "name": "Ciências Biológicas", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/ciencias_biologicas", "email" : "ciencias_biologicas@uniandrade.com.br" },
-    { "name": "Ciências Contábeis", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/ciencias_contabeis", "email" : "ciencias_contabeis@uniandrade.com.br" },
-    { "name": "Design de Interiores", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/design_de_interiores", "email" : "design_de_interiores@uniandrade.com.br" },
-    { "name": "Design de Moda", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/design_de_moda", "email" : "design_de_moda@uniandrade.com.br" },
-    { "name": "Direito", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/direito", "email" : "direito@uniandrade.com.br" },
-    { "name": "Educação Física Bacharelado", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/educacao_fisica_bacharelado", "email" : "educacao_fisica_bacharelado@uniandrade.com.br" },
-    { "name": "Educação Física Licenciatura", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/educacao_fisica_licenciatura", "email" : "educacao_fisica_licenciatura@uniandrade.com.br" },
-    { "name": "Enfermagem", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/enfermagem", "email" : "enfermagem@uniandrade.com.br" },
-    { "name": "Engenharia Civil", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/engenharia_civil", "email" : "engenharia_civil@uniandrade.com.br" },
-    { "name": "Engenharia de Produção", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/engenharia_de_producao", "email" : "engenharia_de_producao@uniandrade.com.br" },
-    { "name": "Engenharia Elétrica", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/engenharia_elétrica", "email" : "engenharia_elétrica@uniandrade.com.br" },
-    { "name": "Farmácia", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/farmacia", "email" : "farmacia@uniandrade.com.br" },
-    { "name": "Física", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/fisica", "email" : "fisica@uniandrade.com.br" },
-    { "name": "Fisioterapia", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/fisioterapia", "email" : "fisioterapia@uniandrade.com.br" },
-    { "name": "Geografia", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/geografia", "email" : "geografia@uniandrade.com.br" },
-    { "name": "História", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/historia", "email" : "historia@uniandrade.com.br" },
-    { "name": "Letras Português/Inglês", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/letras_portugues_ingles", "email" : "letras_portugues_ingles@uniandrade.com.br" },
-    { "name": "Matemática", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/matematica", "email" : "matematica@uniandrade.com.br" },
-    { "name": "Nutrição", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/nutricao", "email" : "nutricao@uniandrade.com.br" },
-    { "name": "Pedagogia", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/pedagogia", "email" : "pedagogia@uniandrade.com.br" },
-    { "name": "Psicologia", "duration": "4 anos", "shift" : "noturno", "location": "Cidade Universitária", "tuition": "R$ 691,45", "site": "https://uniandrade.br/graduacao/psicologia", "email" : "psicologia@uniandrade.com.br" }
-]}
+    {
+      "name": "Administração",
+      "duration": "4 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária e Campus Muricy",
+      "tuition": "R$ 433,00",
+      "site": "https://uniandrade.br/graduacao/administracao",
+      "email": "administracao@uniandrade.com.br"
+    },
+    {
+      "name": "Arquitetura e Urbanismo",
+      "duration": "4 anos e meio",
+      "shift": "diurno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 691,45",
+      "site": "https://uniandrade.br/graduacao/arquitetura_e_urbanismo",
+      "email": "arquitetura_e_urbanismo@uniandrade.com.br"
+    },
+    {
+      "name": "Biomedicina",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 895,45",
+      "site": "https://uniandrade.br/graduacao/biomedicina",
+      "email": "biomedicina@uniandrade.com.br"
+    },
+    {
+      "name": "Ciência da Computação",
+      "duration": "5 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 799,00",
+      "site": "https://uniandrade.br/graduacao/ciencia_da_computacao",
+      "email": "ciencia_da_computacao@uniandrade.com.br"
+    },
+    {
+      "name": "Ciências Biológicas",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Campus Muricy",
+      "tuition": "R$ 430,00",
+      "site": "https://uniandrade.br/graduacao/ciencias_biologicas",
+      "email": "ciencias_biologicas@uniandrade.com.br"
+    },
+    {
+      "name": "Ciências Contábeis",
+      "duration": "3 anos e meio",
+      "shift": "diurno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 388,33",
+      "site": "https://uniandrade.br/graduacao/ciencias_contabeis",
+      "email": "ciencias_contabeis@uniandrade.com.br"
+    },
+    {
+      "name": "Design de Interiores",
+      "duration": "3 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 333,00",
+      "site": "https://uniandrade.br/graduacao/design_de_interiores",
+      "email": "design_de_interiores@uniandrade.com.br"
+    },
+    {
+      "name": "Design de Moda",
+      "duration": "2 anos e meio",
+      "shift": "diurno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 299,99",
+      "site": "https://uniandrade.br/graduacao/design_de_moda",
+      "email": "design_de_moda@uniandrade.com.br"
+    },
+    {
+      "name": "Direito",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária e Campus Muricy",
+      "tuition": "R$ 800,00",
+      "site": "https://uniandrade.br/graduacao/direito",
+      "email": "direito@uniandrade.com.br"
+    },
+    {
+      "name": "Educação Física Bacharelado",
+      "duration": "3 anos e meio",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 295,45",
+      "site": "https://uniandrade.br/graduacao/educacao_fisica_bacharelado",
+      "email": "educacao_fisica_bacharelado@uniandrade.com.br"
+    },
+    {
+      "name": "Educação Física Licenciatura",
+      "duration": "4 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 300,00",
+      "site": "https://uniandrade.br/graduacao/educacao_fisica_licenciatura",
+      "email": "educacao_fisica_licenciatura@uniandrade.com.br"
+    },
+    {
+      "name": "Enfermagem",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 777,00",
+      "site": "https://uniandrade.br/graduacao/enfermagem",
+      "email": "enfermagem@uniandrade.com.br"
+    },
+    {
+      "name": "Engenharia Civil",
+      "duration": "6 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 1.020,99",
+      "site": "https://uniandrade.br/graduacao/engenharia_civil",
+      "email": "engenharia_civil@uniandrade.com.br"
+    },
+    {
+      "name": "Engenharia de Produção",
+      "duration": "5 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 820,75",
+      "site": "https://uniandrade.br/graduacao/engenharia_de_producao",
+      "email": "engenharia_de_producao@uniandrade.com.br"
+    },
+    {
+      "name": "Engenharia Elétrica",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 691,45",
+      "site": "https://uniandrade.br/graduacao/engenharia_elétrica",
+      "email": "engenharia_elétrica@uniandrade.com.br"
+    },
+    {
+      "name": "Farmácia",
+      "duration": "4 anos e meio",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 456,78",
+      "site": "https://uniandrade.br/graduacao/farmacia",
+      "email": "farmacia@uniandrade.com.br"
+    },
+    {
+      "name": "Física",
+      "duration": "5 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 314,18",
+      "site": "https://uniandrade.br/graduacao/fisica",
+      "email": "fisica@uniandrade.com.br"
+    },
+    {
+      "name": "Fisioterapia",
+      "duration": "2 anos e meio",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 800,00",
+      "site": "https://uniandrade.br/graduacao/fisioterapia",
+      "email": "fisioterapia@uniandrade.com.br"
+    },
+    {
+      "name": "Geografia",
+      "duration": "4 anos e meio",
+      "shift": "noturno",
+      "location": "Cidade Universitária e Campus Muricy",
+      "tuition": "R$ 492,09",
+      "site": "https://uniandrade.br/graduacao/geografia",
+      "email": "geografia@uniandrade.com.br"
+    },
+    {
+      "name": "História",
+      "duration": "4 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária e Campus Muricy",
+      "tuition": "R$ 198,40",
+      "site": "https://uniandrade.br/graduacao/historia",
+      "email": "historia@uniandrade.com.br"
+    },
+    {
+      "name": "Letras Português/Inglês",
+      "duration": "4 anos",
+      "shift": "diurno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 600,00",
+      "site": "https://uniandrade.br/graduacao/letras_portugues_ingles",
+      "email": "letras_portugues_ingles@uniandrade.com.br"
+    },
+    {
+      "name": "Matemática",
+      "duration": "4 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 696,96",
+      "site": "https://uniandrade.br/graduacao/matematica",
+      "email": "matematica@uniandrade.com.br"
+    },
+    {
+      "name": "Nutrição",
+      "duration": "4 anos",
+      "shift": "noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 130,50",
+      "site": "https://uniandrade.br/graduacao/nutricao",
+      "email": "nutricao@uniandrade.com.br"
+    },
+    {
+      "name": "Pedagogia",
+      "duration": "3 anos e meio",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária",
+      "tuition": "R$ 666,00",
+      "site": "https://uniandrade.br/graduacao/pedagogia",
+      "email": "pedagogia@uniandrade.com.br"
+    },
+    {
+      "name": "Psicologia",
+      "duration": "4 anos",
+      "shift": "diurno e noturno",
+      "location": "Cidade Universitária e Campus Muricy",
+      "tuition": "R$ 1.009,99",
+      "site": "https://uniandrade.br/graduacao/psicologia",
+      "email": "psicologia@uniandrade.com.br"
+    }
+  ]
+}
