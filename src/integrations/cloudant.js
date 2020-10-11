@@ -35,8 +35,7 @@ const saveBotMessage = async botMessage => {
 		})
 }
 
-// CHECK FOR ACTIVE 
-
+// CHECK FOR ACTIVE SESSIONS
 const activeSessionCheck = async user_id => {
 	const activeUsersession = await cloudant.search('Partitioned', 'getSessionById', { q: `enabled: true AND user_id: "${user_id}"`, partition: 'session', include_docs: true })
 

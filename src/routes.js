@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
 router.post('/api/messages', main.receiveMessage)
 
+// API ENDPOINTS
 router.post('/', (req,res) => {
 	if(!req.body)
 		return res.status(400).json({

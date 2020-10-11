@@ -14,7 +14,7 @@ const assistant = new AssistantV2({
 // RECEIVE USER MESSAGE AND ORCHESTRATE ANSWER
 async function receiveMessage (req, res) {
 	let userMessage = req.body
-	console.log(`Info :>> User ${userMessage.user_id} message received: ${userMessage.text}`)
+	console.log(`Info :>> User ${userMessage.user_id} message received: ${userMessage.content}`)
 
 	let activeSession =	await getActiveSessionFromUser(userMessage)
 	let msgReply = await sendMessageToWA(activeSession, userMessage)
